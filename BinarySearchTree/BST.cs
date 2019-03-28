@@ -8,5 +8,13 @@ namespace BinarySearchTree
 {
     class BST
     {
+        public Node root;
+
+        public BST()
+        {
+            root = null;
+        }
+
+
     }
 }
