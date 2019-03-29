@@ -9,6 +9,7 @@ namespace BinarySearchTree
     class BST
     {
         public Node root;
+        
 
         public BST()
         {
@@ -17,23 +18,23 @@ namespace BinarySearchTree
 
         public void Add(int dataToAdd)
         {
-            Node toAdd = new Node((int)dataToAdd);
+            Node toAdd = new Node(dataToAdd);
 
             if(root == null)
             {
                 root = toAdd;
-                return;
             }
-            else
+            else if( root != null)
             {
                 Node current = root;
                 Node parent;
                 while (true)
                 {
                     parent = current;
-                    if (dataToAdd < current.data)
+                    if (dataToAdd <= current.data)
                     {
-                        if(current == null)
+                        current = current.left;
+                        if (current == null)
                         {
                             parent.left = toAdd;
                             break;
@@ -50,6 +51,27 @@ namespace BinarySearchTree
                         }
                     }
                 }
+            }
+        }
+
+        public void Search(Node node, int primary)
+        {
+            
+            if(node == null)
+            {
+                Console.WriteLine("Sorry no node was found!");
+            }
+            else if(node.data == primary)
+            {
+                Console.WriteLine("Node found!");
+            }
+            else if (primary < node.data)
+            {
+                Search(node.left, primary);
+            }
+            else
+            {
+                Search(node.right, primary);
             }
         }
     }
